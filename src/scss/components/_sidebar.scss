@@ -1,0 +1,86 @@
+/* Боковая панель */
+.sidebar {
+  width: 256px;
+  transition: width 0.3s ease;
+  height: calc(100vh - 56px);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
+  background-color: $background-color_3;
+  color: $color_1;
+  top: 56px;
+  position: fixed;
+  z-index: 997;
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    li {
+      height: 42px;
+      line-height: 42px;
+      a {
+        text-decoration: none;
+        color: inherit;
+        display: block;
+        font-size: 12px;
+        position: relative;
+        span {
+          font-family: $font-family_2;
+          vertical-align: middle;
+        }
+        svg {
+          width: 24px;
+          fill: $svg-color_2;
+          margin: 0 18px;
+          vertical-align: middle;
+        }
+      }
+      &:hover {
+        background-color: $background-color_4;
+      }
+    }
+  }
+  ~ .content {
+    // Если перед page-container ничего нету
+    .page-container:first-child {
+      left: 256px;
+    }
+  }
+}
+
+.sidebar.collapsed {
+  width: 60px;
+  transition: width 0.3s ease;
+  ul {
+    li {
+      a {
+        span {
+          display: none;
+        }
+      }
+    }
+    div {
+      width: 46px;
+      transition: width 0.3s ease;
+    }
+  }
+  ~ .content {
+    .options-panel {
+      left: 60px;
+
+      ~ .page-container {
+        left: 316px;
+      }
+    }
+    // Если перед page-container ничего нету
+    .page-container:first-child {
+      left: 60px;
+    }
+  }
+}
+
+.sidebar__line-separator {
+  width: 242px;
+  height: 2px;
+  background-color: $background-color_4;
+  margin: 7px;
+  transition: width 0.3s ease;
+}

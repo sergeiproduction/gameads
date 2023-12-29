@@ -1,0 +1,134 @@
+[
+  {
+    "id": "2",
+    "title": "Ad Title",
+    "img_url": "/img/empty_icon.png",
+    "description": "Ad description",
+    "appcard": [
+      {
+        "id": "2",
+        "img_url": "/img/empty_icon.png",
+        "title": "App Title 1",
+        "developer": "App Developer 1",
+        "cpc": "0.5",
+        "ctr": "0.1",
+        "cpm": "2.5",
+        "cr": "0.03",
+        "cpa": "5",
+        "downloads": "1000"
+      },
+      {
+        "id": "3",
+        "img_url": "/img/empty_icon.png",
+        "title": "App Title 2",
+        "developer": "App Developer 2",
+        "cpc": "0.6",
+        "ctr": "0.08",
+        "cpm": "3",
+        "cr": "0.02",
+        "cpa": "6",
+        "downloads": "2000"
+      },
+      {
+        "id": "4",
+        "img_url": "/img/empty_icon.png",
+        "title": "App Title 3",
+        "developer": "App Developer 3",
+        "cpc": "0.4",
+        "ctr": "0.12",
+        "cpm": "2",
+        "cr": "0.04",
+        "cpa": "4",
+        "downloads": "1500"
+      },
+      {
+        "id": "5",
+        "img_url": "/img/empty_icon.png",
+        "title": "App Title 4",
+        "developer": "App Developer 4",
+        "cpc": "0.8",
+        "ctr": "0.05",
+        "cpm": "2.8",
+        "cr": "0.01",
+        "cpa": "8",
+        "downloads": "1200"
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "title": "Рекламная кампания id3",
+    "img_url": "/img/empty_icon.png",
+    "description": "Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Там о, которой рот рукописи буквенных имеет строчка переписывается напоивший речью вершину, текст запятых подзаголовок рыбными семантика, грустный имени одна.",
+    "appcard": [
+      {
+        "id": "2",
+        "img_url": "/img/empty_icon.png",
+        "title": "App Title 1",
+        "developer": "App Developer 1",
+        "cpc": "0.5",
+        "ctr": "0.1",
+        "cpm": "2.5",
+        "cr": "0.03",
+        "cpa": "5",
+        "downloads": "13434000"
+      },
+      {
+        "id": "5",
+        "img_url": "/img/empty_icon.png",
+        "title": "App Title 4",
+        "developer": "App Developer 4",
+        "cpc": "0.8",
+        "ctr": "0.05",
+        "cpm": "2.8",
+        "cr": "0.01",
+        "cpa": "8",
+        "downloads": "432424"
+      }
+    ]
+  },
+  {
+    "id": "4",
+    "title": "Да, это тоже рекламная кампания",
+    "img_url": "/img/empty_icon.png",
+    "description": "Текст рекламной кампании aka описание",
+    "appcard": [
+      {
+        "id": "2",
+        "img_url": "/img/empty_icon.png",
+        "title": "App Title 1",
+        "developer": "App Developer 1",
+        "cpc": "0.5",
+        "ctr": "0.1",
+        "cpm": "2.5",
+        "cr": "0.03",
+        "cpa": "5",
+        "downloads": "10432200"
+      },
+      {
+        "id": "4",
+        "img_url": "/img/empty_icon.png",
+        "title": "App Title 3",
+        "developer": "App Developer 3",
+        "cpc": "0.4",
+        "ctr": "0.12",
+        "cpm": "2",
+        "cr": "0.04",
+        "cpa": "4",
+        "downloads": "123231"
+      },
+      {
+        "id": "5",
+        "img_url": "/img/empty_icon.png",
+        "title": "App Title 4",
+        "developer": "App Developer 4",
+        "cpc": "0.8",
+        "ctr": "0.05",
+        "cpm": "2.8",
+        "cr": "0.01",
+        "cpa": "8",
+        "downloads": "2344876"
+      }
+    ]
+  }
+]

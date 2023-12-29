@@ -1,0 +1,34 @@
+[
+    {
+        "id" : 0,
+        "title" : "Название",
+        "developer" : "Разработчик",
+        "description" : "Содержание описания",
+        "type" : 1,
+        "downloads" : 101324
+    },
+    {
+        "id" : 1,
+        "title" : "Game",
+        "developer" : "Developer",
+        "description" : "The best english game",
+        "type" : 0,
+        "downloads" : 912039
+    },
+    {
+        "id" : 2,
+        "title" : "VK",
+        "developer" : "Mail.ru Group",
+        "description" : "Мессенджер, музыка и многое другое уже внутри приложения!",
+        "type" : 1,
+        "downloads" : 5425324
+    },
+    {
+        "id" : 3,
+        "title" : "Besty",
+        "developer" : "ImDeveloper",
+        "description" : "Строй свои королевства прямо сейчас в лучшей мобильной игре тысячелетия",
+        "type" : 0,
+        "downloads" : 672
+    }
+]

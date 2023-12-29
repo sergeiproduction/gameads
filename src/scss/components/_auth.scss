@@ -1,0 +1,139 @@
+/* Окна логина и регистрации */
+.auth__window {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 444px;
+  height: auto;
+  background-color: $background-color_2;
+  border-radius: 20px;
+  padding: 28px;
+  z-index: 1000;
+}
+
+.auth__title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+  > h1 {
+    font-family: $font-family_5;
+    color: $color_3;
+    font-size: 24px;
+  }
+  h1 {
+    span {
+      font-family: $font-family_5;
+      color: $color_4;
+    }
+  }
+  > span {
+    font-family: $font-family_5;
+    font-size: 24px;
+    cursor: pointer;
+  }
+}
+
+.auth__input-field {
+  margin-bottom: 14px;
+  label {
+    font-family: $font-family_4;
+    color: $color_5;
+    font-size: 16px;
+    display: block;
+    margin-bottom: 7px;
+  }
+  input {
+    font-family: $font-family_3;
+    font-size: 14px;
+    width: 100%;
+    height: 42px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: $background-color_7;
+    border: none;
+    outline: none;
+    &::placeholder {
+      color: $color_6;
+      font-weight: normal;
+      font-family: $font-family_3;
+    }
+  }
+  input.invalid {
+    border: 1px solid $error-color;
+  }
+}
+
+.auth__button {
+  width: 100%;
+  height: 42px;
+  padding: 10px;
+  border-radius: 10px;
+  font-family: $font-family_5;
+  color: $color_7;
+  background: linear-gradient(to right, $color_2, $color_3);
+  border: none;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+.auth__divider {
+  background-color: $background-color_8;
+  height: 2px;
+  width: 162px;
+  margin: 0 auto;
+  border: none;
+}
+
+.auth__switch-text {
+  font-family: $font-family_4;
+  font-size: 14px;
+  color: $color_6;
+  text-align: center;
+  margin: 23px 0 auto auto;
+  a {
+    font-family: $font-family_4;
+    font-size: 14px;
+    color: $color_6;
+    text-decoration: underline;
+    text-align: center;
+  }
+}
+
+/* Окно логина */
+.forgot-password {
+  font-family: $font-family_4;
+  font-size: 14px;
+  color: $color_5;
+  text-align: center;
+  margin: 23px auto;
+  a {
+    font-family: $font-family_4;
+    font-size: 14px;
+    color: $color_5;
+    text-decoration: none;
+  }
+}
+
+/* Окно регистрации */
+.register-terms {
+  font-family: $font-family_4;
+  font-size: 14px;
+  color: $color_6;
+  text-align: center;
+  margin: 23px auto;
+  a {
+    font-family: $font-family_4;
+    font-size: 14px;
+    color: $color_6;
+    text-decoration: underline;
+  }
+}
+
+/* Ошибки ввода */
+.error-label {
+  color: $color_6;
+  font-family: $font-family_3;
+  font-size: 14px;
+}
