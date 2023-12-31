@@ -5,8 +5,8 @@ import axios from "../../axios";
 import testData from "../../assets/CampaignsAdCard.json"
 
 export const fetchCampaigns = createAsyncThunk("campaigns/fetchCampaigns", async () => {
-  const { data } = await axios.get("/campaigns");
-  return data;
+  const { data } = await axios.get("/campaigns/game_campaigns");
+  return data.campaigns;
 });
 
 const initialState = {
@@ -29,8 +29,8 @@ const campaignsSlice = createSlice({
         state.status = "loaded";
       })
       .addCase(fetchCampaigns.rejected, (state) => {
-        state.data = testData; //После подключения к бэку удалить
-        // state.data = [];
+        // state.data = testData; //После подключения к бэку удалить
+        state.data = [];
         state.status = "error";
       });
   },

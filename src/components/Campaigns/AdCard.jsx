@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-import axios from "../../axios";
+import axios, { serverURL } from "../../axios";
 
 import AppCard from "./AppCard";
 
 const AverageMetrics = (metrics) => {
-  if (!metrics) {
+  if (!metrics || metrics.appcard.length === 0) {
     return {
       CPC: 0,
       CTR: 0,
@@ -59,7 +59,7 @@ const AdCard = (props) => {
   const handleRunCampaign = async () => {
     try {
       const fields = {is_runned: !campaignIsRunned};
-      await axios.post(`/campaigns/run/${id}`, fields); //После того как антоха добавит запрос, надо будет подправить запрос
+      await axios.patch(`/campaigns/run/${id}`, fields); //После того как антоха добавит запрос, надо будет подправить запрос
       setCampaignIsRunned(!campaignIsRunned);
     } catch (error) {
       console.warn(error);
@@ -72,7 +72,7 @@ const AdCard = (props) => {
 
       <div className="page-container__ad-card__top">
         <img
-          src={props.adcard.img_url}
+          src={`${serverURL}/${props.adcard.img_url}`}
           alt="Рекламная кампания"
           className="page-container__ad-card__image"
         />

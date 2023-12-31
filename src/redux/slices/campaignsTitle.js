@@ -5,8 +5,8 @@ import axios from "../../axios";
 import testData from "../../assets/OptionPanelLinks.json"
 
 export const fetchCampaignsTitle = createAsyncThunk("campaigns/fetchTitle", async () => {
-  const { data } = await axios.get("/campaigns/title");
-  return data;
+  const { data } = await axios.get("/campaigns/");
+  return data.campaings;
 });
 
 const initialState = {
@@ -29,8 +29,8 @@ const campaignsTitleSlice = createSlice({
         state.status = "loaded";
       })
       .addCase(fetchCampaignsTitle.rejected, (state) => {
-        state.data = testData; //После подключения к бэку удалить
-        // state.data = [];
+        // state.data = testData; //После подключения к бэку удалить
+        state.data = [];
         state.status = "error";
       });
   },

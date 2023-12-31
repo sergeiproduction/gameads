@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import axios from "../../axios";
+import axios, { serverURL } from "../../axios";
 
 const formatDownloads = (downloads) => {
   // Создаем массив с порядками чисел и их текстовыми эквивалентами
@@ -47,8 +47,8 @@ const AppCard = (props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleSelectCampaign = (obj) => {
-    setSelectedCampaignId(obj.id);
-    setSelectedCampaignTitle(obj.title);
+    setSelectedCampaignId(obj.adcampaing_id);
+    setSelectedCampaignTitle(obj.name);
     setIsOpen(false);
   };
 
@@ -59,14 +59,14 @@ const AppCard = (props) => {
         // Добавить функцию отправки запроса на обновление рекламной кампании
         // console.log(props.title);
         // console.log(selectedCampaignTitle);
-        
-        const params = {"campaign_id" : selectedCampaignId, "app_id" : props.id}; // Дописать названия полей
+
+        const params = { campaing_id: selectedCampaignId, app_id: props.id }; // Дописать названия полей
         const { data } = await axios.post("/campaigns/app", params); // Дописать эндпоинт
       }
     } catch (error) {
       console.warn(error);
     }
-  }
+  };
 
   // Закрытие списка на клик в любое место
   const nodeRef = useRef();
@@ -76,9 +76,10 @@ const AppCard = (props) => {
         setIsOpen(false);
       }
     };
-    document.body.addEventListener('mousedown', handleClickOutside);
+    document.body.addEventListener("mousedown", handleClickOutside);
 
-    return () => document.body.removeEventListener('mousedown', handleClickOutside);
+    return () =>
+      document.body.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   return (
@@ -97,7 +98,7 @@ const AppCard = (props) => {
         }
       >
         <img
-          src="/img/empty_icon.png"
+          src={`${serverURL}/${props.img_url}`}
           className="page-container__app-icon"
           alt="App Image"
         />
@@ -154,17 +155,19 @@ const AppCard = (props) => {
                 {selectedCampaignTitle ? selectedCampaignTitle : null}
               </div>
             </div>
-            {isOpen && (
-              <ul>
-                {campaignsTitle.data.map((obj) => (
-                  <li key={obj.id} onClick={() => handleSelectCampaign(obj)}>
-                    <div>
-                      {obj.title}
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            )}
+            {isOpen &&
+              (Boolean(campaignsTitle) ? (
+                <ul>
+                  {campaignsTitle.data.map((obj) => (
+                    <li
+                      key={obj.adcampaing_id}
+                      onClick={() => handleSelectCampaign(obj)}
+                    >
+                      <div>{obj.name}</div>
+                    </li>
+                  ))}
+                </ul>
+              ) : null)}
           </div>
 
           <button onClick={handleFetchCampaign}>Добавить</button>

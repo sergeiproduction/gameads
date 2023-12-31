@@ -5,8 +5,8 @@ import axios from "../../axios";
 import testData from "../../assets/AppsAppCards.json"
 
 export const fetchApps = createAsyncThunk("apps/fetchApps", async () => {
-  const { data } = await axios.get("/apps");
-  return data;
+  const { data } = await axios.get("/games");
+  return data.apps;
 });
 
 const initialState = {
@@ -29,8 +29,8 @@ const appsSlice = createSlice({
         state.status = "loaded";
       })
       .addCase(fetchApps.rejected, (state) => {
-        state.data = testData; //После подключения к бэку удалить
-        // state.data = [];
+        // state.data = testData; //После подключения к бэку удалить
+        state.data = [];
         state.status = "error";
       });
   },

@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 
 import { fetchCampaigns } from "../../redux/slices/campaigns";
-import axios from "../../axios";
+import axios, { serverURL } from "../../axios";
 
 const formatDownloads = (downloads) => {
   // Создаем массив с порядками чисел и их текстовыми эквивалентами
@@ -11,7 +11,7 @@ const formatDownloads = (downloads) => {
     { value: 1e9, text: "млрд" },
     { value: 1e6, text: "млн" },
     { value: 1e3, text: "тыс." },
-    { value: 1e2, text: "00" }
+    { value: 1e2, text: "00" },
   ];
 
   // Перебираем массив с порядками чисел
@@ -21,7 +21,7 @@ const formatDownloads = (downloads) => {
       // Округляем число до меньшего целого, деля на порядок числа
       let rounded = Math.floor(downloads / order.value);
       // Возвращаем текст в виде "Более X порядок числа"
-      if (order.value !== orders[orders.length-1].value) {
+      if (order.value !== orders[orders.length - 1].value) {
         return `более ${rounded} ${order.text}`;
       } else {
         return `более ${rounded}${order.text}`;
@@ -39,18 +39,18 @@ const AppCard = (props) => {
 
   const handleRemoveApp = async () => {
     try {
-      const params = {"campaign_id" : id, "app_id" : props.id};
-      const { data } = await axios.delete("/campaigns/app", params);
+      const params = { campaing_id: Number(id), app_id: props.id };
+      const { data } = await axios.delete("/campaigns/app", { data: params });
       dispatch(fetchCampaigns());
     } catch (error) {
       console.warn(error);
     }
-  }
+  };
 
   return (
     <div className="page-container__ad-card__app-card">
       <img
-        src={props.img_url}
+        src={`${serverURL}/${props.img_url}`}
         className="page-container__ad-card__app-icon"
         alt="App Image"
       />

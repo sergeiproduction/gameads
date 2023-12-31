@@ -26,12 +26,13 @@ const Campaigns = ({ isUpdate }) => {
   // Получаем id кампании и по нему достаем кампанию из списка для передачи в AdCard, а также список заголовков кампаний передем в Options Panel
   const { id } = useParams();
   const optionsPanelLinks = campaigns.data.map((obj) => {
+    // console.log(obj.id);
     return {
       id: obj.id,
       title: obj.title,
     };
   });
-  const selectedAdCard = campaigns.data.find((obj) => obj.id === id);
+  const selectedAdCard = campaigns.data.find((obj) => obj.id == id); // Убрал полное совпадение ===, так как один string, другой int
 
   // Проверка авторизован ли пользователь
   const isAuth = useSelector(selectIsAuth);

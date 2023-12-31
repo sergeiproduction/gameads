@@ -1,9 +1,10 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useSelector } from "react-redux";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import React, { useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import axios from "../../axios";
 import { serverURL } from "../../axios";
+import { fetchCampaigns } from "../../redux/slices/campaigns";
 
 import AppCard from "./AppCard";
 
@@ -50,13 +51,23 @@ const AverageMetrics = (metrics) => {
   return averagedMetrics;
 };
 
+const GetRandomBudget = () => {
+  const min = 100;
+  const max = 250000;
+  const roundedMin = Math.ceil(min / 100) * 100;
+  const roundedMax = Math.floor(max / 100) * 100;
+  const randomNumber = Math.floor(Math.random() * (roundedMax - roundedMin + 1)) + roundedMin;
+  return randomNumber;
+}
+
 const AdCardUpdate = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   // Определение режим редактирования или добавления
   const { id } = useParams();
   const campaigns = useSelector((state) => state.campaigns);
-  const selectedAdCard = campaigns.data.find((obj) => obj.id === id);
+  const selectedAdCard = campaigns.data.find((obj) => obj.id == id); // Убрал полное совпадение ===, так как один string, другой int
 
   let selectedAdCardUpdate;
   const isEditing = Boolean(id) && Boolean(selectedAdCard);
@@ -84,8 +95,9 @@ const AdCardUpdate = () => {
       const formData = new FormData();
       const file = event.target.files[0];
       // console.log(file);
-      formData.append("image", file);
-      const { data } = await axios.post("/upload", formData);
+      formData.append("upload_file", file);
+      const headers = {'Content-Type': 'multipart/form-data'};
+      const { data } = await axios.post("/img", formData, {headers: headers});
       setAdImgURL(data.img_url);
       // console.log(data);
     } catch (error) {
@@ -121,18 +133,21 @@ const AdCardUpdate = () => {
         };
         // console.log(fields);
         await axios.patch(`/campaigns/${id}`, fields);
+        dispatch(fetchCampaigns());
         navigate(`/campaigns/${id}`);
       } else {
         // Если было добавление
         const fields = {
           // id: values.adId,
-          title: values.adTitle,
-          img_url: adImgURL,
-          description: values.adDescription,
+          name: values.adTitle,
+          content_path: adImgURL,
+          message: values.adDescription,
+          budget: GetRandomBudget(),
         };
         // console.log(fields);
         const { data } = await axios.post("/campaigns", fields);
-        const newId = data.id;
+        dispatch(fetchCampaigns());
+        const newId = data.adcampaing_id;
         navigate(`/campaigns/${newId}`);
       }
     } catch (error) {
@@ -164,7 +179,7 @@ const AdCardUpdate = () => {
         {adImgURL ? (
           <>
             <img
-              src={`${serverURL}${adImgURL}`}
+              src={`${serverURL}/${adImgURL}`}
               alt="Рекламная кампания"
               className="page-container__ad-card__image"
             />

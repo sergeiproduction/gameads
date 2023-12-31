@@ -36,7 +36,8 @@ const OptionsPanel = (props) => {
     (state) => state.filter.campaigns.searchValue
   );
 
-  const OptionsPanelLinksData = props.links
+  const campaigns = useSelector((state) => state.campaigns); // вохможно удалить
+  const OptionsPanelLinksData = campaigns.data //props.links
     .filter((obj) => {
       if (
         obj.title
