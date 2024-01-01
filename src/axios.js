@@ -1,7 +1,8 @@
 import axios from "axios";
 import { logout } from "./redux/slices/user";
 
-export const serverURL = "http://26.3.189.182:8000";
+// export const serverURL = "http://26.3.189.182:8000";
+export const serverURL = process.env.API_URL;
 
 const instance = axios.create({
   baseURL: serverURL,
