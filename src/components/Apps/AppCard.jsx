@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useRef, useState } from "react";
+import { useSelector } from "react-redux";
 import axios, { serverURL } from "../../axios";
 
 const formatDownloads = (downloads) => {
@@ -61,7 +61,7 @@ const AppCard = (props) => {
         // console.log(selectedCampaignTitle);
 
         const params = { campaing_id: selectedCampaignId, app_id: props.id }; // Дописать названия полей
-        const { data } = await axios.post("/campaigns/app", params); // Дописать эндпоинт
+        await axios.post("/campaigns/app", params); // Дописать эндпоинт
       }
     } catch (error) {
       console.warn(error);
@@ -100,7 +100,7 @@ const AppCard = (props) => {
         <img
           src={`${serverURL}/${props.img_url}`}
           className="page-container__app-icon"
-          alt="App Image"
+          alt="App"
         />
         <div className="page-container__app-details">
           <div className="page-container__app-name">

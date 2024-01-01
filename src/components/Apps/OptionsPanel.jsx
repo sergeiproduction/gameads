@@ -16,8 +16,6 @@ const OptionsPanel = () => {
   const {
     register,
     handleSubmit,
-    getValues,
-    formState: { errors, isValid },
   } = useForm({
     defaultValues: {
       appsType: "all",
