@@ -5,10 +5,7 @@ import { logout } from "./redux/slices/user";
 export const serverURL = process.env.REACT_APP_API_URL;
 
 const instance = axios.create({
-  baseURL: serverURL,
-  headers: {
-    'ngrok-skip-browser-warning': '1' // Для ngrock
-  }
+  baseURL: serverURL
 });
 
 instance.interceptors.request.use((config) => {
