@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 import axios, { serverURL } from "../../axios";
 
 import AppCard from "./AppCard";
+import { fetchCampaigns } from "../../redux/slices/campaigns";
 
 const AverageMetrics = (metrics) => {
   if (!metrics || metrics.appcard.length === 0) {
@@ -49,9 +51,10 @@ const AverageMetrics = (metrics) => {
 };
 
 const AdCard = (props) => {
+  const dispatch = useDispatch();
   const { id } = useParams();
   const [campaignIsRunned, setCampaignIsRunned] = useState(props.adcard.is_runned);
-  // console.log(campaignIsRunned);
+
 
   const averagedMetrics = AverageMetrics(props.adcard);
 
@@ -60,11 +63,12 @@ const AdCard = (props) => {
       const fields = {is_runned: !campaignIsRunned};
       await axios.patch(`/campaigns/run/${id}`, fields); //После того как антоха добавит запрос, надо будет подправить запрос
       setCampaignIsRunned(!campaignIsRunned);
+      dispatch(fetchCampaigns());
     } catch (error) {
       console.warn(error);
     }
   }
-
+  
   return (
     <div className="page-container__ad-card">
       <h3 className="page-container__ad-card__title">{props.adcard.title}</h3>
