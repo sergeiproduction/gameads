@@ -15,6 +15,7 @@ import Campaigns from "./pages/Campaigns";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import NotFound from "./pages/NotFound";
+import Advert from "./pages/Advert";
 
 function App() {
   const dispatch = useDispatch();
@@ -44,6 +45,9 @@ function App() {
         </Route>
         
       </Route>
+
+      {/* Страница рекламной кампании */}
+      <Route path="/campaigns/:id/run" element={<Advert />} />
 
       {/* Страница авторизации */}
       <Route path="/login" element={<Login />} />
