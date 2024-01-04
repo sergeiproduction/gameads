@@ -53,29 +53,34 @@ const AverageMetrics = (metrics) => {
 const AdCard = (props) => {
   const dispatch = useDispatch();
   const { id } = useParams();
-  const [campaignIsRunned, setCampaignIsRunned] = useState(props.adcard.is_runned);
-
+  const [campaignIsRunned, setCampaignIsRunned] = useState(
+    props.adcard.is_runned
+  );
 
   const averagedMetrics = AverageMetrics(props.adcard);
 
   const handleRunCampaign = async () => {
     try {
-      const fields = {is_runned: !campaignIsRunned};
+      const fields = { is_runned: !campaignIsRunned };
       await axios.patch(`/campaigns/run/${id}`, fields); //После того как антоха добавит запрос, надо будет подправить запрос
       setCampaignIsRunned(!campaignIsRunned);
       dispatch(fetchCampaigns());
     } catch (error) {
       console.warn(error);
     }
-  }
-  
+  };
+
   return (
     <div className="page-container__ad-card">
       <h3 className="page-container__ad-card__title">{props.adcard.title}</h3>
 
       <div className="page-container__ad-card__top">
         <img
-          src={`${serverURL}/${props.adcard.img_url}`}
+          src={
+            props.adcard.img_url
+              ? `${serverURL}/${props.adcard.img_url}`
+              : "/img/empty_icon.png"
+          }
           alt="Рекламная кампания"
           className="page-container__ad-card__image"
         />
@@ -108,7 +113,9 @@ const AdCard = (props) => {
 
       <div className="page-container__ad-card__buttons">
         {/* <button>Статистика</button> */}
-        <button onClick={handleRunCampaign} className="primary">{campaignIsRunned ? "Остановить" : "Запустить"}</button>
+        <button onClick={handleRunCampaign} className="primary">
+          {campaignIsRunned ? "Остановить" : "Запустить"}
+        </button>
         <Link to={`/campaigns/${id}/edit`}>
           <button>
             <svg

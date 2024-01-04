@@ -212,9 +212,11 @@ const AdCardUpdate = () => {
         )}
         <div className="page-container__ad-card__text">
           <textarea
-            {...register("adDescription", {
-              required: "Обязательное поле",
-            })}
+            {...register("adDescription"
+            // , {
+            //   required: "Обязательное поле",
+            // }
+            )}
             placeholder="Описание"
           ></textarea>
         </div>
