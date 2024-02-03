@@ -5,7 +5,7 @@ const History = () => {
   return (
     <div className="container">
       <div className="page-container">
-        <HistoryCampaigns />
+        <HistoryCampaigns key={0}/>
       </div>
     </div>
   );

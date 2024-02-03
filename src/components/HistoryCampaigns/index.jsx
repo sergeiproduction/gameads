@@ -31,16 +31,23 @@ export const HistoryCampaigns = () => {
   return (
     <div className={styles.component}>
       <h1>История создания рекламных кампаний</h1>
+      {console.log(campaignsHistory.data)}
 
-      {isCampaignsHistoryLoading ? null : (
-        campaignsHistory.data.map((obj) => (
-        <div className={styles.campaigns}>
-          <div className={styles.campaigns_name}>{obj.name}</div>
-          <div className={styles.campaigns_date}>{formatDate(obj.created_at)}</div>
-        </div>
-        ))
-      )}
-      
+      {
+        isCampaignsHistoryLoading ? null : (
+          (campaignsHistory.data.length == 0) ?
+          (
+            <div className={styles.emptyHistoryText}>Вы еще не создали ни одной рекламной кампании :(</div>
+          ) : (
+            campaignsHistory.data.map((obj) => (
+            <div key={obj.adcampaing_id} className={styles.campaigns}>
+              <div className={styles.campaigns_name}>{obj.name}</div>
+              <div className={styles.campaigns_date}>{formatDate(obj.created_at)}</div>
+            </div>
+            )))
+          )
+    }
+
     </div>
   );
 };
