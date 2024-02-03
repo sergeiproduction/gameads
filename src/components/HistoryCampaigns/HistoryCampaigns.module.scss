@@ -1,0 +1,35 @@
+@import "../../scss/variables";
+@import "../../scss/fonts";
+
+.component {
+  width: 100%;
+  padding: 28px;
+  border-radius: 10px;
+  background-color: $background-color_2;
+  
+  h1 {
+    width: 100%;
+    margin-bottom: 28px;
+
+    font-family: $font-family_1;
+    color: $color_5;
+    font-size: 14px;
+  }
+
+  .campaigns {
+    font-family: $font-family_1;
+    color: $color_5;
+    font-size: 12px;
+    
+    margin-top: 7px;
+    display: flex;
+    
+    &_name {
+      display: flex;
+      flex-grow: 1;
+    }
+    &_date {
+      display: flex;
+    }
+  }
+}

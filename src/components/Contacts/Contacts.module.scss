@@ -14,22 +14,26 @@
 
     font-family: $font-family_1;
     color: $color_5;
-    font-size: 14px;
+    font-size: 12px;
   }
 }
 
 .title {
   width: 100%;
-  margin: 14px 0;
+  margin-bottom: 14px;
 
   font-family: $font-family_2;
   color: $color_5;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .contact_container {
   display: flex;
   flex-direction: column;
+
+  font-family: $font-family_1;
+  color: $color_5;
+  font-size: 12px;
 
   & div {
     display: flex;

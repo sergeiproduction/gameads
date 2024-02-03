@@ -17,6 +17,7 @@ import Register from "./pages/Register";
 import NotFound from "./pages/NotFound";
 import Advert from "./pages/Advert";
 import Support from "./pages/Support";
+import History from "./pages/History";
 
 function App() {
   const dispatch = useDispatch();
@@ -44,6 +45,9 @@ function App() {
           <Route path=":id/edit" element={<Campaigns isUpdate={true} />} /> 
           {/* <Route path=":id/edit" element={<Campaigns />} /> Добавить новый элемент AdCardUpdate внутри Campaigns для изменения карточки */}
         </Route>
+
+        {/* История рекламных кампаний */}
+        <Route path="history" element={<History />} />
 
         {/* Поддержка и обратная связь */}
         <Route path="support" element={<Support />} />
